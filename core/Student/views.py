@@ -39,3 +39,13 @@ def Student_Filter(request):
     return JsonResponse(serializer.data, safe=False)
 
 
+
+def Student_Filter_And(request):
+    # Student_Data = Students.objects.filter(Q(surname="Gopal")) & Students.objects.filter(Q(age=25))
+    Student_Data = Students.objects.filter(Q(surname="Gopal"))  &  Students.objects.filter(Q(age=25))
+
+    serializer = StudentSerializer(Student_Data,many=True)
+
+    return JsonResponse(serializer.data, safe=False)
+
+
